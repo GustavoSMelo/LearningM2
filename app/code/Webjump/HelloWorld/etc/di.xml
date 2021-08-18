@@ -3,4 +3,18 @@
     <type name="Magento\Framework\App\Action\Action">
         <plugin name="CustomAction" type="Webjump\HelloWorld\Plugin\CustomAction" sortOrder="99" disabled="false" />
     </type>
+
+    <type name="Webjump\HelloWorld\Model\DebugHandler">
+        <arguments>
+            <argument name="filesystem" xsi:type="object">Magento\Framework\Filesystem\Driver\File</argument>
+        </arguments>
+    </type>
+    <type name="Webjump\HelloWorld\Logger\CustomLogger">
+        <arguments>
+            <argument name="name" xsi:type="string">CustomLogger</argument>
+            <argument name="handlers" xsi:type="array">
+                <item name="system" xsi:type="object">Webjump\HelloWorld\Model\DebugHandler</item>
+            </argument>
+        </arguments>
+    </type>
 </config>
