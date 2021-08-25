@@ -17,4 +17,11 @@
             </argument>
         </arguments>
     </type>
+    <type name="Magento\Framework\Console\CommandListInterface">
+        <arguments>
+           <argument name="commands" xsi:type="array">
+               <item name="my_custom_command" xsi:type="object">Webjump\HelloWorld\Console\Command\CustomCommand</item>
+            </argument>
+        </arguments>
+    </type>
 </config>
