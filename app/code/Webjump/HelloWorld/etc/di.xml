@@ -24,4 +24,5 @@
             </argument>
         </arguments>
     </type>
+    <preference for="Webjump\HelloWorld\Api\MyApiInterface" type="Webjump\HelloWorld\Model\MyApi" />
 </config>
