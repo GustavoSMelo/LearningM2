@@ -1,11 +1,19 @@
-.header.panel, .page-header {
-    background-color: #fff !important;
+.page-header .panel.wrapper {
+    background-color: #fff;
+    border: none;
 }
 
-.header .links,
-.header .panel > .header .links > li > a,
-.link .authorization-link {
+.header.panel > .header.links > li > a, .header.panel > .header.links > li.welcome {
     color: #000;
+    transition: 0.5s;
+}
+
+.header.panel > .header.links > li > a {
+    font-weight: bold;
+}
+
+.header.panel > .header.links > li > a:hover{
+    color: #000 !important;
 }
 
 .header .content {
@@ -25,11 +33,7 @@
     border-radius: 5px;
     padding: 8px;
     font-size: 12pt;
-    border-bottom: solid 1.5px #000;
-    transition: 0.35s;
-}
-
-#search:focus{
     border: solid 1.5px #000;
     transition: 0.35s;
+    cursor: pointer;
 }
