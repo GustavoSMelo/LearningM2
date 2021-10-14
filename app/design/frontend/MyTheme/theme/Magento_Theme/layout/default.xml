@@ -3,8 +3,8 @@
         <referenceBlock name="logo">
             <arguments>
                 <argument name="logo_file" xsi:type="string">images/logo.png</argument>
-                <argument name="logo_width" xsi:type="number">120</argument>
-                <argument name="logo_height" xsi:type="number">120</argument>
+                <argument name="logo_width" xsi:type="number">80</argument>
+                <argument name="logo_height" xsi:type="number">80</argument>
                 <argument name="logo_alt" xsi:type="string">Magneto Logo</argument>
             </arguments>
         </referenceBlock>
