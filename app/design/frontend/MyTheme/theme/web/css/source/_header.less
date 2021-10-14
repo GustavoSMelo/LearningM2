@@ -1,6 +1,12 @@
+@charset "utf-8";
+
 .page-header .panel.wrapper {
     background-color: #fff;
     border: none;
+}
+
+.page-header {
+    box-shadow: 1px 1px 4px #fafafa;
 }
 
 .header.panel > .header.links > li > a, .header.panel > .header.links > li.welcome {
@@ -31,9 +37,15 @@
     color: #000;
     border: none;
     border-radius: 5px;
-    padding: 8px;
+    padding: 15px;
     font-size: 12pt;
     border: solid 1.5px #000;
     transition: 0.35s;
     cursor: pointer;
+}
+
+.nav-sections .header.links li > a, .nav-sections .header.links li.greet.welcome {
+    border: none;
+    margin: 30px;
+    padding: 5px;
 }
