@@ -1,5 +1,5 @@
 {
-    "name": "webjump/helloworld",
+    "name": "myvendor/helloworld",
     "description": "",
     "type": "magento2-module",
     "version": "1.0.0",
