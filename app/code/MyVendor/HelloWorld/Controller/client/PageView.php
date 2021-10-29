@@ -42,6 +42,7 @@ class PageView extends \Magento\Framework\App\Action\Action
 
         $this->urlRewrite->save();
 
-        return $this->_pageFactory->create(ResultFactory::TYPE_PAGE);
+        $this->_view->loadLayout();
+        $this->_view->renderLayout();
     }
 }
