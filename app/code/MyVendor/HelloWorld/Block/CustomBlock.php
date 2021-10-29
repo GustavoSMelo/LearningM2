@@ -14,4 +14,12 @@ class CustomBlock extends Template
     {
         parent::_construct($context, $data);
     }
+
+    /**
+     * @return string
+     */
+    public function helloWorld(): string
+    {
+        return 'Hello world';
+    }
 }
