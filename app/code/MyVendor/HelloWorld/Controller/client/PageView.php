@@ -33,16 +33,15 @@ class PageView extends \Magento\Framework\App\Action\Action
 
     public function execute()
     {
-        $this->urlRewrite->setStoreId(1);
-        $this->urlRewrite->setIsSystem(0);
-        $this->urlRewrite->setIdPath(rand(1, 100000));
-        $this->urlRewrite->setTargetPath('myroute/client/pageview');
-        $this->urlRewrite->setRequestPath('url/rewrite/ex03');
-        $this->urlRewrite->setRedirectType(OptionProvider::PERMANENT);
+        // $this->urlRewrite->setStoreId(1);
+        // $this->urlRewrite->setIsSystem(0);
+        // $this->urlRewrite->setIdPath(rand(1, 100000));
+        // $this->urlRewrite->setTargetPath('myroute/client/pageview');
+        // $this->urlRewrite->setRequestPath('url/rewrite/ex03');
+        // $this->urlRewrite->setRedirectType(OptionProvider::PERMANENT);
 
-        $this->urlRewrite->save();
+        // $this->urlRewrite->save();
 
-        $this->_view->loadLayout();
-        $this->_view->renderLayout();
+        return $this->_pageFactory->create();
     }
 }
