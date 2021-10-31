@@ -1,9 +1,7 @@
 <?php
 namespace MyVendor\HelloWorld\Controller\client;
 
-use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\View\Result\PageFactory;
-use Magento\UrlRewrite\Model\OptionProvider;
 use Magento\UrlRewrite\Model\UrlRewrite;
 
 class PageView extends \Magento\Framework\App\Action\Action
