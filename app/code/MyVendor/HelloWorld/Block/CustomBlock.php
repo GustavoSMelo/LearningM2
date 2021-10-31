@@ -12,7 +12,7 @@ class CustomBlock extends Template
      */
     public function __construct(Context $context, array $data = [])
     {
-        parent::_construct($context, $data);
+        parent::__construct($context, $data);
     }
 
     /**
@@ -20,6 +20,6 @@ class CustomBlock extends Template
      */
     public function helloWorld(): string
     {
-        return 'Hello world';
+        return __('Hello world');
     }
 }
