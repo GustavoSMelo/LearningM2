@@ -4,4 +4,11 @@
      */
 ?>
 
-<?php echo $block->helloWorld() ?>
+<link
+    rel="stylesheet"
+    type="text/css"
+    href="<?php echo $block->getViewFileUrl("MyVendor_HelloWorld::css/customBlockStyle.css") ?>" />
+
+<h1>
+    <?php echo $block->helloWorld() ?>
+</h1>
