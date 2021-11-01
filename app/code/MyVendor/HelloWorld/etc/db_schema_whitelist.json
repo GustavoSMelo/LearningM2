@@ -1,0 +1,14 @@
+{
+    "toy_table": {
+        "column": {
+            "id": true,
+            "name": true,
+            "price": true,
+            "owner_id": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "TOY_TABLE_ID_CUSTOMER_ENTITY_ENTITY_ID": true
+        }
+    }
+}
