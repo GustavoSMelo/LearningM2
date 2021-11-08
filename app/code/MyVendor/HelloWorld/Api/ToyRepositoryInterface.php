@@ -2,6 +2,8 @@
 namespace MyVendor\HelloWorld\Api;
 
 use Magento\Framework\Api\SearchCriteriaInterface;
+use Magento\Framework\Exception\CouldNotSaveException;
+use Magento\Framework\Exception\NotFoundException;
 use MyVendor\HelloWorld\Api\Data\ToyInterface;
 use MyVendor\HelloWorld\Api\Data\ToySearchCriteriaInterface;
 
@@ -14,6 +16,7 @@ interface ToyRepositoryInterface
      * Get a toy using a id
      *
      * @param int $id
+     * @throws NotFoundException
      * @return ToyInterface
      */
     public function getById(int $id): ToyInterface;
@@ -22,6 +25,7 @@ interface ToyRepositoryInterface
      * Save a toy using a instance of same
      *
      * @param ToyInterface $toyInterface
+     * @throws CouldNotSaveException
      * @return void
      */
     public function save(ToyInterface $toyInterface): void;
@@ -30,6 +34,7 @@ interface ToyRepositoryInterface
      * Get a list of ToySearchCriteriaInterface
      *
      * @param SearchCriteriaInterface $searchCriteriaInterface
+     * @throws NotFoundException
      * @return ToySearchCriteriaInterface
      */
     public function getList(SearchCriteriaInterface $searchCriteriaInterface): ToySearchCriteriaInterface;
