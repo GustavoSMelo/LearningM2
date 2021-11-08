@@ -1,5 +1,5 @@
 <?php
-namespace MyVendor\HelloWorld\Model\ResourceModel\Collection;
+namespace MyVendor\HelloWorld\Model\ResourceModel\Toy;
 
 use MyVendor\HelloWorld\Model\ResourceModel\Toy as ResourceModelToy;
 use MyVendor\HelloWorld\Model\Toy;
