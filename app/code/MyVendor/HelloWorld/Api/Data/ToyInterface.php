@@ -54,14 +54,14 @@ interface ToyInterface extends ExtensibleDataInterface
      *
      * @return float
      */
-    public function getPrice(): string;
+    public function getPrice(): float;
 
     /**
      * Getter relationship between toy and customer
      *
      * @return int
      */
-    public function getOwnerId(): string;
+    public function getOwnerId(): int;
 
     // setters
 
@@ -94,5 +94,5 @@ interface ToyInterface extends ExtensibleDataInterface
      * @param int $ownerId
      * @return self
      */
-    public function setOwnerId(): self;
+    public function setOwnerId(int $ownerId): self;
 }
