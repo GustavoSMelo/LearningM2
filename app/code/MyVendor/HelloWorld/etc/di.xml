@@ -24,5 +24,10 @@
             </argument>
         </arguments>
     </type>
+
     <preference for="MyVendor\HelloWorld\Api\MyApiInterface" type="MyVendor\HelloWorld\Model\MyApi" />
+    <preference for="MyVendor\HelloWorld\Api\Data\ToyInterface" type="MyVendor\HelloWorld\Model\Data\Toy" />
+    <preference for="MyVendor\HelloWorld\Model\Data\Toy" type="MyVendor\HelloWorld\Model\Toy" />
+    <preference for="MyVendor\HelloWorld\Api\Data\ToyRepositoryInterface" type="MyVendor\HelloWorld\Model\ToyRepository" />
+    <preference for="MyVendor\HelloWorld\Api\ToyRepositoryInterface" type="MyVendor\HelloWorld\Model\ToyRepository" />
 </config>
