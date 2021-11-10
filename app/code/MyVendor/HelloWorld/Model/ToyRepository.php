@@ -1,12 +1,19 @@
 <?php
+
 namespace MyVendor\HelloWorld\Model;
 
+use Magento\Framework\Api\Search\SearchResultFactory;
+use Magento\Framework\Api\SearchCriteriaInterface;
 use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\Framework\Exception\NotFoundException;
 use MyVendor\HelloWorld\Api\Data\ToyInterface;
 use MyVendor\HelloWorld\Api\ToyRepositoryInterface;
 use MyVendor\HelloWorld\Model\ToyFactory;
 use MyVendor\HelloWorld\Api\Data\ToyInterfaceFactory;
+use MyVendor\HelloWorld\Api\Data\ToySearchCriteriaInterface;
+use MyVendor\HelloWorld\Model\ResourceModel\Toy\CollectionFactory;
+use Magento\Framework\Api\ExtensionAttribute\JoinProcessorInterface;
+use Magento\Framework\Api\SearchCriteria\CollectionProcessorInterface;
 
 class ToyRepository implements ToyRepositoryInterface
 {
@@ -20,10 +27,48 @@ class ToyRepository implements ToyRepositoryInterface
      */
     private $toyInterfaceFactory;
 
-    public function __construct(ToyFactory $toyFactory, ToyInterfaceFactory $toyInterfaceFactory)
+    /**
+     * @var SearchResultFactory
+     */
+    private $searchResultFactory;
+
+    /**
+     * @var CollectionFactory
+     */
+    private $collectionFactory;
+
+    /**
+     * @var JoinProcessorInterface
+     */
+    private $joinProcessorInterface;
+
+    /**
+     * @var CollectionProcessorInterface
+     */
+    private $collectionProcessorInterface;
+
+    /**
+     * Constructor for toy repository
+     *
+     * @param ToyFactory $toyFactory
+     * @param ToyInterfaceFactory $toyInterfaceFactory
+     * @param SearchResultFactory $searchResultFactory
+     * @param JoinProcessorInterface $joinProcessorInterface
+     * @param CollectionProcessorInterface $collectionProcessorInterface
+     */
+    public function __construct(
+        ToyFactory $toyFactory,
+        ToyInterfaceFactory $toyInterfaceFactory,
+        SearchResultFactory $searchResultFactory,
+        JoinProcessorInterface $joinProcessorInterface,
+        CollectionProcessorInterface $collectionProcessorInterface,
+    )
     {
         $this->toyModelFactory = $toyFactory;
         $this->toyInterfaceFactory = $toyInterfaceFactory;
+        $this->searchResultFactory = $searchResultFactory;
+        $this->joinProcessorInterface = $joinProcessorInterface;
+        $this->collectionProcessorInterface = $collectionProcessorInterface
     }
 
     /**
@@ -74,12 +119,38 @@ class ToyRepository implements ToyRepositoryInterface
                 ->setOwnerId($toyModel->getData(ToyInterface::COLUMN_OWNER_ID));
 
             return $toyInterface;
-
         } catch (NotFoundException $err) {
             throw new NotFoundException(__('Not found a toy with this ID'));
         }
     }
 
-    // write a getList()
+    /**
+     * Get a list of all toys
+     *
+     * @param SearchCriteriaInterface $searchCriteriaInterface
+     * @return ToySearchCriteriaInterface
+     */
+    public function getList(SearchCriteriaInterface $searchCriteriaInterface): ToySearchCriteriaInterface
+    {
+        $collection = $this->collectionFactory->create();
 
+        $this->joinProcessorInterface->process($collection, ToyInterface::class);
+        $this->collectionProcessorInterface->process($searchCriteriaInterface, $collection);
+
+        $items = [];
+
+        foreach ($collection as $model) {
+            $items[] = $model->getDataModel();
+        }
+
+        /**
+         * @var ToySearchCriteriaInterface
+         */
+        $searchResult = $this->searchResultFactory->create();
+        $searchResult->setSearchCriteria($searchCriteriaInterface);
+        $searchResult->setItems($items);
+        $searchResult->setTotalCount($collection->getSize());
+
+        return $searchResult;
+    }
 }
