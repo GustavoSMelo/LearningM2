@@ -14,9 +14,17 @@ use MyVendor\HelloWorld\Api\Data\ToySearchCriteriaInterface;
 use MyVendor\HelloWorld\Model\ResourceModel\Toy\CollectionFactory;
 use Magento\Framework\Api\ExtensionAttribute\JoinProcessorInterface;
 use Magento\Framework\Api\SearchCriteria\CollectionProcessorInterface;
+use Magento\Framework\Api\ExtensibleDataObjectConverter;
+use MyVendor\HelloWorld\Model\ResourceModel\Toy as ToyResource;
+use MyVendor\HelloWorld\Model\Data\Toy as ToyData;
 
 class ToyRepository implements ToyRepositoryInterface
 {
+    /**
+     * @var ToyResource
+     */
+    private $toyResource;
+
     /**
      * @var ToyFactory
      */
@@ -48,27 +56,46 @@ class ToyRepository implements ToyRepositoryInterface
     private $collectionProcessorInterface;
 
     /**
+     * @var ExtensibleDataObjectConverter
+     */
+    private $extensibleData;
+
+    /**
+     * @var ToyData
+     */
+    private $toyData;
+
+    /**
      * Constructor for toy repository
      *
-     * @param ToyFactory $toyFactory
+     * @param ToyFactory $toyModelFactory
      * @param ToyInterfaceFactory $toyInterfaceFactory
      * @param SearchResultFactory $searchResultFactory
      * @param JoinProcessorInterface $joinProcessorInterface
      * @param CollectionProcessorInterface $collectionProcessorInterface
+     * @param ExtensibleDataObjectConverter $extensibleData
+     * @param ToyResource $toyResource
+     * @param ToyData $toyData
      */
     public function __construct(
-        ToyFactory $toyFactory,
+        ToyFactory $toyModelFactory,
         ToyInterfaceFactory $toyInterfaceFactory,
         SearchResultFactory $searchResultFactory,
         JoinProcessorInterface $joinProcessorInterface,
-        CollectionProcessorInterface $collectionProcessorInterface
+        CollectionProcessorInterface $collectionProcessorInterface,
+        ExtensibleDataObjectConverter $extensibleData,
+        ToyResource $toyResource,
+        ToyData $toyData
     )
     {
-        $this->toyModelFactory = $toyFactory;
+        $this->toyModelFactory = $toyModelFactory;
         $this->toyInterfaceFactory = $toyInterfaceFactory;
         $this->searchResultFactory = $searchResultFactory;
         $this->joinProcessorInterface = $joinProcessorInterface;
         $this->collectionProcessorInterface = $collectionProcessorInterface;
+        $this->extensibleData = $extensibleData;
+        $this->toyResource = $toyResource;
+        $this->toyData = $toyData;
     }
 
     /**
@@ -80,13 +107,12 @@ class ToyRepository implements ToyRepositoryInterface
      */
     public function save(ToyInterface $toyInterface): void
     {
-        /**
-         * @var Toy $toyModel
-         */
-        $toyModel = $this->toyModelFactory->create();
+        $data = $this->extensibleData->toNestedArray($toyInterface, [], ToyInterface::class);
+
+        $toy = $this->toyModelFactory->create()->setData($data);
 
         try {
-            $toyModel->save($toyInterface);
+            $this->toyResource->save($toy);
         } catch (CouldNotSaveException $err) {
             throw new CouldNotSaveException(__('Is not possible to save this toy, please, try again'));
         }
@@ -105,20 +131,15 @@ class ToyRepository implements ToyRepositoryInterface
             /**
              * @var Toy $toyModel
              */
-            $toyModel = $this->toyModelFactory->create();
+            $toyModel = $this->toyModelFactory->create()->load($id);
 
-            /**
-             * @var ToyInterface $toyInterface
-             */
-            $toyInterface = $this->toyInterfaceFactory->create();
-
-            $toyInterface
+            $this->toyData
                 ->setId($toyModel->getData(ToyInterface::ENTITY_TABLE_ID))
                 ->setName($toyModel->getData(ToyInterface::COLUMN_NAME))
                 ->setPrice($toyModel->getData(ToyInterface::COLUMN_PRICE))
                 ->setOwnerId($toyModel->getData(ToyInterface::COLUMN_OWNER_ID));
 
-            return $toyInterface;
+            return $this->toyData;
         } catch (NotFoundException $err) {
             throw new NotFoundException(__('Not found a toy with this ID'));
         }
