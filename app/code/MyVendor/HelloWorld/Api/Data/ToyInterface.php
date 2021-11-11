@@ -38,9 +38,9 @@ interface ToyInterface extends ExtensibleDataInterface
     /**
      * Getter entity id
      *
-     * @return int
+     * @return int|null
      */
-    public function getId(): int;
+    public function getId(): ?int;
 
     /**
      * Getter name
