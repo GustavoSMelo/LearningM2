@@ -21,6 +21,7 @@
         <arguments>
            <argument name="commands" xsi:type="array">
                <item name="my_custom_command" xsi:type="object">MyVendor\HelloWorld\Console\Command\CustomCommand</item>
+               <item name="toy_command_save" xsi:type="object">MyVendor\HelloWorld\Console\Command\ToySaveCommand</item>
             </argument>
         </arguments>
     </type>
