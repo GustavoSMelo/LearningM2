@@ -14,9 +14,9 @@ class Toy extends AbstractExtensibleObject implements ToyInterface
     /**
      * Get Id
      *
-     * @return integer
+     * @return int|null
      */
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->_get(self::ENTITY_TABLE_ID);
     }
