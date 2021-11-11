@@ -9,6 +9,7 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
+use MyVendor\HelloWorld\Model\Data\Toy;
 
 class ToySaveCommand extends Command
 {
@@ -18,18 +19,18 @@ class ToySaveCommand extends Command
     private $toyRepositoryInterface;
 
     /**
-     * @var ToyInterfaceFactory
+     * @var Toy
      */
-    private $toyInterfaceFactory;
+    private $toy;
 
     /**
      * @param ToyRepositoryInterface $toyRepositoryInterface
-     * @param ToyInterfaceFactory $toyInterfaceFactory
+     * @param Toy $toyInterfaceFactory
      */
-    public function __construct(ToyRepositoryInterface $toyRepositoryInterface, ToyInterfaceFactory $toyInterfaceFactory)
+    public function __construct(ToyRepositoryInterface $toyRepositoryInterface, Toy $toy)
     {
         $this->toyRepositoryInterface = $toyRepositoryInterface;
-        $this->toyInterfaceFactory = $toyInterfaceFactory;
+        $this->toy = $toy;
 
         parent::__construct();
     }
@@ -54,16 +55,11 @@ class ToySaveCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         try {
-            /**
-             * @var ToyInterface $toy
-             */
-            $toy = $this->toyInterfaceFactory
-                ->create()
-                ->setName('teste')
-                ->setPrice(10.2)
-                ->setOwnerId(1);
+            $this->toy->setName('teste');
+            $this->toy->setPrice(10.2);
+            $this->toy->setOwnerId(1);
 
-            $this->toyRepositoryInterface->save($toy);
+            $this->toyRepositoryInterface->save($this->toy);
             $output->writeln('<info>Toy saved with success</info>');
         } catch (CouldNotSaveException $err) {
             $output->writeln('<error>An error encountered when try to save a toy.</error>');
