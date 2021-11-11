@@ -22,13 +22,14 @@
            <argument name="commands" xsi:type="array">
                <item name="my_custom_command" xsi:type="object">MyVendor\HelloWorld\Console\Command\CustomCommand</item>
                <item name="toy_command_save" xsi:type="object">MyVendor\HelloWorld\Console\Command\ToySaveCommand</item>
+               <item name="toy_command_getById" xsi:type="object">MyVendor\HelloWorld\Console\Command\ToyGetByIdCommand</item>
             </argument>
         </arguments>
     </type>
 
     <preference for="MyVendor\HelloWorld\Api\MyApiInterface" type="MyVendor\HelloWorld\Model\MyApi" />
     <preference for="MyVendor\HelloWorld\Api\Data\ToyInterface" type="MyVendor\HelloWorld\Model\Data\Toy" />
-    <preference for="MyVendor\HelloWorld\Model\Data\Toy" type="MyVendor\HelloWorld\Model\Toy" />
+    <preference for="MyVendor\HelloWorld\Api\Data\ToyInterface" type="MyVendor\HelloWorld\Model\Toy" />
     <preference for="MyVendor\HelloWorld\Api\Data\ToyRepositoryInterface" type="MyVendor\HelloWorld\Model\ToyRepository" />
     <preference for="MyVendor\HelloWorld\Api\ToyRepositoryInterface" type="MyVendor\HelloWorld\Model\ToyRepository" />
 </config>
