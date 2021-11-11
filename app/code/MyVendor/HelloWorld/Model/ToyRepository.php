@@ -61,14 +61,14 @@ class ToyRepository implements ToyRepositoryInterface
         ToyInterfaceFactory $toyInterfaceFactory,
         SearchResultFactory $searchResultFactory,
         JoinProcessorInterface $joinProcessorInterface,
-        CollectionProcessorInterface $collectionProcessorInterface,
+        CollectionProcessorInterface $collectionProcessorInterface
     )
     {
         $this->toyModelFactory = $toyFactory;
         $this->toyInterfaceFactory = $toyInterfaceFactory;
         $this->searchResultFactory = $searchResultFactory;
         $this->joinProcessorInterface = $joinProcessorInterface;
-        $this->collectionProcessorInterface = $collectionProcessorInterface
+        $this->collectionProcessorInterface = $collectionProcessorInterface;
     }
 
     /**
