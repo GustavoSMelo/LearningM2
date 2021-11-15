@@ -9,7 +9,6 @@ use Magento\Framework\Exception\NotFoundException;
 use MyVendor\HelloWorld\Api\Data\ToyInterface;
 use MyVendor\HelloWorld\Api\ToyRepositoryInterface;
 use MyVendor\HelloWorld\Model\ToyFactory;
-use MyVendor\HelloWorld\Api\Data\ToyInterfaceFactory;
 use MyVendor\HelloWorld\Api\Data\ToySearchCriteriaInterface;
 use MyVendor\HelloWorld\Model\ResourceModel\Toy\CollectionFactory;
 use Magento\Framework\Api\ExtensionAttribute\JoinProcessorInterface;
@@ -29,11 +28,6 @@ class ToyRepository implements ToyRepositoryInterface
      * @var ToyFactory
      */
     private $toyModelFactory;
-
-    /**
-     * @var ToyInterfaceFactory
-     */
-    private $toyInterfaceFactory;
 
     /**
      * @var SearchResultFactory
@@ -69,7 +63,6 @@ class ToyRepository implements ToyRepositoryInterface
      * Constructor for toy repository
      *
      * @param ToyFactory $toyModelFactory
-     * @param ToyInterfaceFactory $toyInterfaceFactory
      * @param SearchResultFactory $searchResultFactory
      * @param JoinProcessorInterface $joinProcessorInterface
      * @param CollectionProcessorInterface $collectionProcessorInterface
@@ -79,7 +72,6 @@ class ToyRepository implements ToyRepositoryInterface
      */
     public function __construct(
         ToyFactory $toyModelFactory,
-        ToyInterfaceFactory $toyInterfaceFactory,
         SearchResultFactory $searchResultFactory,
         JoinProcessorInterface $joinProcessorInterface,
         CollectionProcessorInterface $collectionProcessorInterface,
@@ -89,7 +81,6 @@ class ToyRepository implements ToyRepositoryInterface
     )
     {
         $this->toyModelFactory = $toyModelFactory;
-        $this->toyInterfaceFactory = $toyInterfaceFactory;
         $this->searchResultFactory = $searchResultFactory;
         $this->joinProcessorInterface = $joinProcessorInterface;
         $this->collectionProcessorInterface = $collectionProcessorInterface;
