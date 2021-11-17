@@ -1,4 +1,4 @@
-rm -rf ./generated/*
+rm -rf ./pub/static/frontend/*
 rm -rf ./var/cache/*
 rm -rf ./var/tmp/*
 rm -rf ./var/page_cache/*
