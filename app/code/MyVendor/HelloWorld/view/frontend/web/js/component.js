@@ -1,6 +1,14 @@
 define([
-    'uiElement'
-], function (Component) {
+    'uiElement',
+    'ko'
+], function (ko) {
     'use strict';
-    return Component.extend();
+    return function (config) {
+        return {
+            title: ko.observable('Hello World from ui component'),
+            getModuleName: function () {
+                return config;
+            }
+        }
+    }
 });

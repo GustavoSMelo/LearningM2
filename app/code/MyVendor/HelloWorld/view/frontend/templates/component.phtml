@@ -9,7 +9,7 @@
                 "components": {
                     "myvendor-helloworld": {
                         "component": "MyVendor_HelloWorld/js/component",
-                        "title": "Hello World from UiComponents !",
+                        "modulename": <?= $block->escapeJs($block->getModuleName()) ?>,
                     }
                 }
             }
