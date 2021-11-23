@@ -5,7 +5,6 @@ use Magento\Framework\Controller\Result\Json;
 
 class JsonView extends \Magento\Framework\App\Action\Action
 {
-
     private Json $json;
 
     public function __construct(
