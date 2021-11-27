@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd" class="Magento\Ui\Component\Listing" component="uiComponent">
     <argument name="data" xsi:type="array">
+        <item name="template" xsi:type="string">template/listing/default</item>
         <item name="label" xsi:type="string">Hello world from ui component</item>
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">product_listing.product_listing_provider</item>
+        </item>
     </argument>
+    <dataSource name="product_listing_provider" component="Magento_Ui/js/grid/provider">
+        <dataProvider name="product_listing_provider" class="Magento\Catalog\Ui\DataProvider\Product\ProductDataProvider">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>entity_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
 </listing>
