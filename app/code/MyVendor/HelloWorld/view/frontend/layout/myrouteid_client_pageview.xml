@@ -6,7 +6,20 @@
                 class="MyVendor\HelloWorld\Block\CustomBlock"
                 name="client_pageview"
                 template="MyVendor_HelloWorld::customblock.phtml"
-            />
+            >
+                <arguments>
+                    <argument name="jsLayout" xsi:type="array">
+                        <item name="components" xsi:type="array">
+                            <item name="helloworld_uicomponent" xsi:type="array">
+                                <item name="component" xsi:type="string">MyVendor_HelloWorld/js/helloworld</item>
+                                <item name="config" xsi:type="array">
+                                    <item name="message" xsi:type="string">Um texto vindo do xml :) </item>
+                                </item>
+                            </item>
+                        </item>
+                    </argument>
+                </arguments>
+            </block>
         </referenceContainer>
     </body>
 </page>
