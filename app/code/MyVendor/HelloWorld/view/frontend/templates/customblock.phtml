@@ -12,3 +12,17 @@
 <h1>
     <?php echo $block->helloWorld() ?>
 </h1>
+
+<span id="loucura">
+    <div data-bind="scope: 'helloworld_uicomponent' " id="template_html_component">
+        <!-- ko template: getTemplate() -->
+        <!-- /ko -->
+    </div>
+</span>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Magento_Ui/js/core/app": <?= $block->getJsLayout() ?>
+        }
+    }
+</script>
