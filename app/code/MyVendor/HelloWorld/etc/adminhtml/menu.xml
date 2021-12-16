@@ -1,6 +1,19 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
-        <add id="MyVendor_HelloWorld::custom_menu_id" title="Custom Menu" module="MyVendor_HelloWorld" sortOrder="10" action="custom_admin_id/adminhtml/custom_menu" resource="MyVendor_HelloWorld::menu_id"/>
+        <add
+            id="MyVendor_HelloWorld::custom_menu_id"
+            title="Custom Menu"
+            module="MyVendor_HelloWorld"
+            sortOrder="10"
+            resource="Magento_Backend::content" />
+
+        <add
+            id="MyVendor_HelloWorld::custom_child"
+            title="Child item"
+            module="MyVendor_HelloWorld"
+            resource="Magento_Backend::content"
+            action="customadminid/Adminhtml/CustomMenuItem"
+            parent="MyVendor_HelloWorld::custom_menu_id" />
     </menu>
 </config>
