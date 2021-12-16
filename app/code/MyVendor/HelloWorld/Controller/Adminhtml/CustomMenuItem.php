@@ -29,9 +29,19 @@ class CustomMenuItem extends Action
     public function execute(): Page
     {
         $page = $this->_pageFactory->create();
-        $page->setActiveMenu('MyVendor_HelloWorld::custom_menu_id');
+        $this->_setActiveMenu('MyVendor_HelloWorld::custom_menu_id');
         $page->getConfig()->getTitle()->prepend(__('Menu example'));
 
         return $page;
+    }
+
+    /**
+     * Check Permission.
+     *
+     * @return bool
+     */
+    protected function _isAllowed(): bool
+    {
+        return $this->_authorization->isAllowed('MyVendor_HelloWorld::custom_menu_id');
     }
 }

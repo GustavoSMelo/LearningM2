@@ -3,7 +3,7 @@
     <body>
         <referenceContainer name="content">
             <block
-                class="Magento\Backend\Block\Template"
+                class="MyVendor\HelloWorld\Block\Adminhtml\CustomAdminBlock"
                 template="MyVendor_HelloWorld::custommenuadminitem.phtml" />
         </referenceContainer>
     </body>
