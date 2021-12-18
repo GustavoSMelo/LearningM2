@@ -13,7 +13,7 @@
             title="Child item"
             module="MyVendor_HelloWorld"
             resource="Magento_Backend::content"
-            action="customadminid/Adminhtml/CustomMenuItem"
+            action="customadminid/custom"
             parent="MyVendor_HelloWorld::custom_menu_id" />
     </menu>
 </config>
