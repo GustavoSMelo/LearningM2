@@ -20,6 +20,6 @@ class RawView extends \Magento\Framework\App\Action\Action
 
     public function execute()
     {
-        return $this->raw->setContents('Hello world from raw page ');
+        return $this->raw->setContents(__('Hello world from raw page '));
     }
 }
