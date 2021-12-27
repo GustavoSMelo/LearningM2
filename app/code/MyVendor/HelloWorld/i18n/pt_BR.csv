@@ -1,0 +1,6 @@
+"Hello world", "Ola mundo"
+"Custom hello world for admin page", "Ola mundo customizado para pagina administrativo"
+"<error>A toy with this email does not exists </error>", "<error>Um brinquedo com esse email nao existe</error>"
+"<error>An error encountered when try to save a toy.</error>", "<error>Erro encontrado ao tentar salvar um brinquedo</error>"
+"<info>Toy saved with success</info>", "<info>Briqnuedo salvo com sucesso</info>"
+"Hello world from component", "Ola mundo vindo de um componente"
