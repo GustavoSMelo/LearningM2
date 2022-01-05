@@ -53,7 +53,7 @@
         - Redirect view Controller <br />
     </li>
     <li>
-        Create a frontend for controller using: <br/>
+        Created a frontend for controller using: <br/>
         - Blocks <br />
         - Layout.xml file <br />
         - .phtml file
@@ -63,13 +63,14 @@
     <li>Plugins</li>
     <li>Data patch</li>
     <li>Custom backend menu and view page</li>
-    <li>Create a new table in database</li>
+    <li>Created a new table in database</li>
     <li>Repository (CRUD) for this new table</li>
     <li>Interface for repository and new table</li>
     <li>EAV custom attribute</li>
     <li>ACL</li>
     <li>Create a custom theme based on LUMA</li>
-    <li>Create Ui Component to render dynamic datas</li>
+    <li>Created Ui Component to render dynamic datas</li>
+    <li>Created shellscripts to make more easier my life in magento 2 </li>
 </ul>
 
 <h4>Things that I don't did in this repository: </h4>
