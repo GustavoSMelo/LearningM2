@@ -68,6 +68,8 @@
     <li>Interface for repository and new table</li>
     <li>EAV custom attribute</li>
     <li>ACL</li>
+    <li>Create a custom theme based on LUMA</li>
+    <li>Create Ui Component to render dynamic datas</li>
 </ul>
 
 <h4>Things that I don't did in this repository: </h4>
